@@ -1,5 +1,128 @@
 {
   "definitions": {
+    "180_FormulaOneCircuits": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneCircuits",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "circuitId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "circuitRef": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "location": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "country": {
+          "type": "cds.String",
+          "length": 20
+        },
+		    "lat": {
+          "precision": 15,
+          "scale": 5,
+          "type": "cds.Decimal"
+        },
+		    "lng": {
+          "precision": 15,
+          "scale": 5,
+          "type": "cds.Decimal"
+        },
+		    "alt": {
+          "type": "cds.Integer"
+        },
+        "_180_FormulaOnePitStops": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOnePitStops",
+          "on": [
+            {
+              "ref": [
+                "driverId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOnePitStops",
+                "driverId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOnePitStops"
+        }
+      }
+    },
+    "180_FormulaOneDriverStandings": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneDriverStandings",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "driverStandingsId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "raceId": {
+          "type": "cds.Integer"
+        },
+        "driverId": {
+          "type": "cds.Integer"
+        },
+        "points": {
+          "type": "cds.Integer"
+        },
+        "position": {
+          "@EndUserText.label": "EndingPosition",
+          "type": "cds.Integer"
+        },
+        "wins": {
+          "type": "cds.Integer"
+        },
+        "_180_FormulaOneDrivers": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneDrivers",
+          "on": [
+            {
+              "ref": [
+                "driverId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneDrivers",
+                "driverId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneDrivers"
+        }
+      }
+    },
     "180_FormulaOneDrivers": {
       "kind": "entity",
       "@EndUserText.label": "180_FormulaOneDrivers",
@@ -38,15 +161,15 @@
           "length": 20
         },
 		    "dob": {
-          "type": "cds.Date",
+          "type": "cds.Date"
 		    },
 		    "nationality": {
           "type": "cds.String",
           "length": 20
         },
-        "_180_GbiOrders": {
+        "_180_FormulaOnePitStops": {
           "type": "cds.Association",
-          "@EndUserText.label": "_180_GbiOrders",
+          "@EndUserText.label": "_180_FormulaOnePitStops",
           "on": [
             {
               "ref": [
@@ -56,18 +179,18 @@
             "=",
             {
               "ref": [
-                "_180_GbiOrders",
+                "_180_FormulaOnePitStops",
                 "driverId"
               ]
             }
           ],
-          "target": "180_GbiOrders"
+          "target": "180_FormulaOnePitStops"
         }
       }
     },
-    "180_GbiCustomerText": {
+    "180_FormulaOneLapTimesGrouped": {
       "kind": "entity",
-      "@EndUserText.label": "180_GbiCustomerText",
+      "@EndUserText.label": "180_FormulaOneLapTimesGrouped",
       "@ObjectModel.modelingPattern": {
         "#": "DATA_STRUCTURE"
       },
@@ -78,107 +201,27 @@
       ],
       "@DataWarehouse.pinToMemory": true,
       "elements": {
+        "index": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
         "driverId": {
-          "type": "cds.Integer",
-          "key": true,
-          "notNull": true
-        },
-        "CustDescr": {
-          "type": "cds.String",
-          "length": 40
-        },
-        "_180_FormulaOneDrivers": {
-          "type": "cds.Association",
-          "@EndUserText.label": "_180_FormulaOneDrivers",
-          "on": [
-            {
-              "ref": [
-                "driverId"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "_180_FormulaOneDrivers",
-                "driverId"
-              ]
-            }
-          ],
-          "target": "180_FormulaOneDrivers"
-        }
-      }
-    },
-    "180_GbiOrderItems": {
-      "kind": "entity",
-      "@EndUserText.label": "180_GbiOrderItems",
-      "@ObjectModel.modelingPattern": {
-        "#": "DATA_STRUCTURE"
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "DATA_STRUCTURE"
-        }
-      ],
-      "@DataWarehouse.pinToMemory": true,
-      "elements": {
-        "OrderNumber": {
-          "type": "cds.Integer",
-          "key": true,
-          "notNull": true
-        },
-        "OrderItem": {
-          "type": "cds.Integer",
-          "key": true,
-          "notNull": true
-        },
-        "ProductId": {
-          "type": "cds.String",
-          "length": 18
-        },
-        "SalesQuantity": {
           "type": "cds.Integer"
         },
-        "UnitOfMeasure": {
-          "@EndUserText.label": "UnitOfMeasure",
-          "type": "cds.String",
-          "length": 3,
-          "@Analytics.dimension": true
+        "raceId": {
+          "type": "cds.Integer"
         },
-        "Revenue": {
-          "precision": 15,
-          "scale": 2,
-          "type": "cds.Decimal"
-        },
-        "Currency": {
-          "@EndUserText.label": "Currency",
-          "type": "cds.String",
-          "length": 5
-        },
-        "Discount": {
-          "precision": 15,
-          "scale": 2,
-          "type": "cds.Decimal"
-        },
-        "RevenueUSD": {
-          "precision": 15,
-          "scale": 2,
-          "type": "cds.Decimal"
-        },
-        "DiscountUSD": {
-          "precision": 15,
-          "scale": 2,
-          "type": "cds.Decimal"
-        },
-        "CostsUSD": {
+        "avgMillisecondsLap": {
           "precision": 15,
           "scale": 2,
           "type": "cds.Decimal"
         }
       }
     },
-    "180_GbiOrders": {
+    "180_FormulaOnePitStops": {
       "kind": "entity",
-      "@EndUserText.label": "180_GbiOrders",
+      "@EndUserText.label": "180_FormulaOnePitStops",
       "@ObjectModel.modelingPattern": {
         "#": "DATA_STRUCTURE"
       },
@@ -189,112 +232,116 @@
       ],
       "@DataWarehouse.pinToMemory": true,
       "elements": {
-        "OrderNumber": {
+        "index": {
           "type": "cds.Integer",
           "key": true,
           "notNull": true
         },
-        "Date": {
+        "raceId": {
+          "type": "cds.Integer"
+        },
+        "driverId": {
+          "type": "cds.Integer"
+        },
+        "stop": {
+          "type": "cds.Integer"
+        },
+        "lap": {
+          "type": "cds.Integer"
+        },
+        "time": {
+          "type": "cds.Time"
+        },
+        "milliseconds": {
+          "type": "cds.Integer"
+        },
+        "_180_FormulaOneLapTimesGrouped": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneLapTimesGrouped",
+          "on": [
+            {
+              "ref": [
+                "OrderNumber"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneLapTimesGrouped",
+                "OrderNumber"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneLapTimesGrouped"
+        }
+      }
+    },
+    "180_FormulaOneRacesRaces": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneRacesRaces",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "raceId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "year": {
+          "type": "cds.Integer"
+        },
+        "round": {
+          "type": "cds.Integer"
+        },
+        "circuitId": {
+          "type": "cds.Integer"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "date": {
           "type": "cds.Date"
         },
-        "driverId": {
-          "type": "cds.Integer"
+        "time": {
+          "type": "cds.Time"
         },
-        "_180_GbiOrderItems": {
-          "type": "cds.Association",
-          "@EndUserText.label": "_180_GbiOrderItems",
-          "on": [
-            {
-              "ref": [
-                "OrderNumber"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "_180_GbiOrderItems",
-                "OrderNumber"
-              ]
-            }
-          ],
-          "target": "180_GbiOrderItems"
-        }
-      }
-    },
-    "180_GbiPlanData": {
-      "kind": "entity",
-      "@EndUserText.label": "180_GbiPlanData",
-      "@ObjectModel.modelingPattern": {
-        "#": "DATA_STRUCTURE"
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "DATA_STRUCTURE"
-        }
-      ],
-      "elements": {
-        "Year": {
-          "@EndUserText.label": "Year",
-          "type": "cds.Integer",
-          "key": true,
-          "notNull": true,
-          "@Analytics.dimension": true
+        "fp1_date": {
+          "type": "cds.Date"
         },
-        "driverId": {
-          "@EndUserText.label": "driverId",
-          "type": "cds.Integer",
-          "key": true,
-          "notNull": true,
-          "@Analytics.dimension": true
+        "fp1_time": {
+          "type": "cds.Time"
         },
-        "RevenuePlan": {
-          "@EndUserText.label": "RevenuePlan",
-          "precision": 15,
-          "scale": 2,
-          "type": "cds.Decimal",
-          "@Analytics.dimension": true
+        "fp2_date": {
+          "type": "cds.Date"
         },
-        "Currency": {
-          "@EndUserText.label": "Currency",
-          "type": "cds.String",
-          "length": 5
-        }
-      }
-    },
-    "180_GbiProductAttr": {
-      "kind": "entity",
-      "@EndUserText.label": "180_GbiProductAttr",
-      "@ObjectModel.modelingPattern": {
-        "#": "DATA_STRUCTURE"
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "DATA_STRUCTURE"
-        }
-      ],
-      "@DataWarehouse.pinToMemory": true,
-      "elements": {
-        "ProductId": {
-          "type": "cds.String",
-          "length": 18,
-          "key": true,
-          "notNull": true
+        "fp2_time": {
+          "type": "cds.Time"
         },
-        "ProdCat": {
-          "type": "cds.String",
-          "length": 3
+        "fp3_date": {
+          "type": "cds.Date"
         },
-        "CatDescr": {
-          "type": "cds.String",
-          "length": 40
+        "fp3_time": {
+          "type": "cds.Time"
         },
-        "UOM": {
-          "type": "cds.String",
-          "length": 3
+        "quali_date": {
+          "type": "cds.Date"
         },
-        "Division": {
-          "type": "cds.String",
-          "length": 2
+        "quali_time": {
+          "type": "cds.Time"
+        },
+        "sprint_date": {
+          "type": "cds.Date"
+        },
+        "sprint_time": {
+          "type": "cds.Time"
         },
         "_180_GbiProductText": {
           "type": "cds.Association",
@@ -315,9 +362,9 @@
           ],
           "target": "180_GbiProductText"
         },
-        "_180_GbiOrderItems1": {
+        "_180_FormulaOneLapTimesGrouped1": {
           "type": "cds.Association",
-          "@EndUserText.label": "_180_GbiOrderItems1",
+          "@EndUserText.label": "_180_FormulaOneLapTimesGrouped1",
           "on": [
             {
               "ref": [
@@ -327,18 +374,18 @@
             "=",
             {
               "ref": [
-                "_180_GbiOrderItems1",
+                "_180_FormulaOneLapTimesGrouped1",
                 "ProductId"
               ]
             }
           ],
-          "target": "180_GbiOrderItems"
+          "target": "180_FormulaOneLapTimesGrouped"
         }
       }
     },
-    "180_GbiProductText": {
+    "180_FormulaOneResults": {
       "kind": "entity",
-      "@EndUserText.label": "180_GbiProductText",
+      "@EndUserText.label": "180_FormulaOneResults",
       "@ObjectModel.modelingPattern": {
         "#": "DATA_STRUCTURE"
       },
@@ -349,15 +396,84 @@
       ],
       "@DataWarehouse.pinToMemory": true,
       "elements": {
-        "ProductId": {
-          "type": "cds.String",
-          "length": 18,
+        "resultId": {
+          "type": "cds.Integer",
           "key": true,
           "notNull": true
         },
-        "ProdDescr": {
+        "raceId": {
+          "type": "cds.Integer"
+        },
+        "driverId": {
+          "type": "cds.Integer"
+        },
+        "constructorId": {
+          "type": "cds.Integer"
+        },
+        "number": {
+          "type": "cds.Integer"
+        },
+        "grid": {
+          "@EndUserText.label": "StartingPosition",
+          "type": "cds.Integer"
+        },
+        "positionOrder": {
+          "@EndUserText.label": "EndingPosition",
+          "type": "cds.Integer"
+        },
+        "points": {
+          "type": "cds.Integer"
+        },
+        "laps": {
+          "type": "cds.Integer"
+        },
+        "time": {
+          "type": "cds.Time"
+        },
+        "milliseconds": {
+          "type": "cds.Integer"
+        },
+        "fastestLap": {
+          "type": "cds.Integer"
+        },
+        "rank": {
+          "@EndUserText.label": "PositionFastestLap",
+          "type": "cds.Integer"
+        },
+        "fastestLapTime": {
+          "type": "cds.Time"
+        },
+        "fastestLapSpeed": {
+          "precision": 15,
+          "scale": 3,
+          "type": "cds.Decimal"
+        },
+        "statusId": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "180_FormulaOneStatus": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneStatus",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "statusId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "status": {
           "type": "cds.String",
-          "length": 40
+          "length": 25
         }
       }
     }
