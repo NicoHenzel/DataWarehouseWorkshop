@@ -47,24 +47,24 @@
 		    "alt": {
           "type": "cds.Integer"
         },
-        "_180_FormulaOnePitStops": {
+        "_180_FormulaOneRaces": {
           "type": "cds.Association",
-          "@EndUserText.label": "_180_FormulaOnePitStops",
+          "@EndUserText.label": "_180_FormulaOneRaces",
           "on": [
             {
               "ref": [
-                "driverId"
+                "circuitId"
               ]
             },
             "=",
             {
               "ref": [
-                "_180_FormulaOnePitStops",
-                "driverId"
+                "_180_FormulaOneRaces",
+                "circuitId"
               ]
             }
           ],
-          "target": "180_FormulaOnePitStops"
+          "target": "180_FormulaOneRaces"
         }
       }
     },
@@ -120,6 +120,25 @@
             }
           ],
           "target": "180_FormulaOneDrivers"
+        },
+        "_180_FormulaOneRaces1": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces1",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces1",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
         }
       }
     },
@@ -166,25 +185,6 @@
 		    "nationality": {
           "type": "cds.String",
           "length": 20
-        },
-        "_180_FormulaOnePitStops": {
-          "type": "cds.Association",
-          "@EndUserText.label": "_180_FormulaOnePitStops",
-          "on": [
-            {
-              "ref": [
-                "driverId"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "_180_FormulaOnePitStops",
-                "driverId"
-              ]
-            }
-          ],
-          "target": "180_FormulaOnePitStops"
         }
       }
     },
@@ -216,6 +216,44 @@
           "precision": 15,
           "scale": 2,
           "type": "cds.Decimal"
+        },
+        "_180_FormulaOneDrivers1": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneDrivers1",
+          "on": [
+            {
+              "ref": [
+                "driverId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneDrivers1",
+                "driverId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneDrivers"
+        },
+        "_180_FormulaOneRaces2": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces2",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces2",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
         }
       }
     },
@@ -255,30 +293,49 @@
         "milliseconds": {
           "type": "cds.Integer"
         },
-        "_180_FormulaOneLapTimesGrouped": {
+        "_180_FormulaOneDrivers2": {
           "type": "cds.Association",
-          "@EndUserText.label": "_180_FormulaOneLapTimesGrouped",
+          "@EndUserText.label": "_180_FormulaOneDrivers2",
           "on": [
             {
               "ref": [
-                "OrderNumber"
+                "driverId"
               ]
             },
             "=",
             {
               "ref": [
-                "_180_FormulaOneLapTimesGrouped",
-                "OrderNumber"
+                "_180_FormulaOneDrivers2",
+                "driverId"
               ]
             }
           ],
-          "target": "180_FormulaOneLapTimesGrouped"
+          "target": "180_FormulaOneDrivers"
+        },
+        "_180_FormulaOneRaces3": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces3",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces3",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
         }
       }
     },
-    "180_FormulaOneRacesRaces": {
+    "180_FormulaOneRaces": {
       "kind": "entity",
-      "@EndUserText.label": "180_FormulaOneRacesRaces",
+      "@EndUserText.label": "180_FormulaOneRaces",
       "@ObjectModel.modelingPattern": {
         "#": "DATA_STRUCTURE"
       },
@@ -342,44 +399,6 @@
         },
         "sprint_time": {
           "type": "cds.Time"
-        },
-        "_180_GbiProductText": {
-          "type": "cds.Association",
-          "@EndUserText.label": "_180_GbiProductText",
-          "on": [
-            {
-              "ref": [
-                "ProductId"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "_180_GbiProductText",
-                "ProductId"
-              ]
-            }
-          ],
-          "target": "180_GbiProductText"
-        },
-        "_180_FormulaOneLapTimesGrouped1": {
-          "type": "cds.Association",
-          "@EndUserText.label": "_180_FormulaOneLapTimesGrouped1",
-          "on": [
-            {
-              "ref": [
-                "ProductId"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "_180_FormulaOneLapTimesGrouped1",
-                "ProductId"
-              ]
-            }
-          ],
-          "target": "180_FormulaOneLapTimesGrouped"
         }
       }
     },
@@ -450,6 +469,63 @@
         },
         "statusId": {
           "type": "cds.Integer"
+        },
+        "_180_FormulaOneDrivers3": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneDrivers3",
+          "on": [
+            {
+              "ref": [
+                "driverId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneDrivers3",
+                "driverId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneDrivers"
+        },
+        "_180_FormulaOneRaces4": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces4",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces4",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
+        },
+        "_180_FormulaOneConstructors": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneConstructors",
+          "on": [
+            {
+              "ref": [
+                "constructorId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneConstructors",
+                "constructorId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneConstructors"
         }
       }
     },
@@ -474,6 +550,419 @@
         "status": {
           "type": "cds.String",
           "length": 25
+        },
+        "_180_FormulaOneResults": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneResults",
+          "on": [
+            {
+              "ref": [
+                "statusId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneResults",
+                "statusId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneResults"
+        }
+      }
+    },
+    "180_FormulaOneConstructors": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneConstructors",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "constructorId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "constructorRef": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 25
+        },
+        "nationality": {
+          "type": "cds.String",
+          "length": 20
+        }
+      }
+    },
+    "180_FormulaOneConstructorStandings": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneConstructorStandings",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "constructorStandingsId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "raceId": {
+          "type": "cds.Integer"
+        },
+        "constructorId": {
+          "type": "cds.Integer"
+        },
+        "points": {
+          "type": "cds.Integer"
+        },
+        "position": {
+          "type": "cds.Integer"
+        },
+        "wins": {
+          "type": "cds.Integer"
+        },
+        "_180_FormulaOneRaces5": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces5",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces5",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
+        },
+        "_180_FormulaOneConstructors1": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneConstructors1",
+          "on": [
+            {
+              "ref": [
+                "constructorId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneConstructors1",
+                "constructorId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneConstructors"
+        }
+      }
+    },"180_FormulaOneConstructorResults": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneConstructorResults",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "constructorResultsId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "raceId": {
+          "type": "cds.Integer"
+        },
+        "constructorId": {
+          "type": "cds.Integer"
+        },
+        "points": {
+          "type": "cds.Integer"
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "_180_FormulaOneRaces6": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces6",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces6",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
+        },
+        "_180_FormulaOneConstructors2": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneConstructors2",
+          "on": [
+            {
+              "ref": [
+                "constructorId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneConstructors2",
+                "constructorId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneConstructors"
+        }
+      }
+    },
+    "180_FormulaOneQualifying": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneQualifying",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "qualifyId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "raceId": {
+          "type": "cds.Integer"
+        },
+        "driverId": {
+          "type": "cds.Integer"
+        },
+        "constructorId": {
+          "type": "cds.Integer"
+        },
+        "number": {
+          "type": "cds.Integer"
+        },
+        "position": {
+          "type": "cds.Integer"
+        },
+        "q1": {
+          "type": "cds.Time"
+        },
+        "q2": {
+          "type": "cds.Time"
+        },
+        "q3": {
+          "type": "cds.Time"
+        },
+        "_180_FormulaOneDrivers4": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneDrivers4",
+          "on": [
+            {
+              "ref": [
+                "driverId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneDrivers4",
+                "driverId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneDrivers"
+        },
+        "_180_FormulaOneRaces7": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces7",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces7",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
+        },
+        "_180_FormulaOneConstructors3": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneConstructors3",
+          "on": [
+            {
+              "ref": [
+                "constructorId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneConstructors3",
+                "constructorId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneConstructors"
+        }
+      }
+    },
+    "180_FormulaOneSprintResults": {
+      "kind": "entity",
+      "@EndUserText.label": "180_FormulaOneSprintResults",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.pinToMemory": true,
+      "elements": {
+        "resultId": {
+          "type": "cds.Integer",
+          "key": true,
+          "notNull": true
+        },
+        "raceId": {
+          "type": "cds.Integer"
+        },
+        "driverId": {
+          "type": "cds.Integer"
+        },
+        "constructorId": {
+          "type": "cds.Integer"
+        },
+        "number": {
+          "type": "cds.Integer"
+        },
+        "grid": {
+          "@EndUserText.label": "StartingPosition",
+          "type": "cds.Integer"
+        },
+        "positionOrder": {
+          "@EndUserText.label": "EndingPosition",
+          "type": "cds.Integer"
+        },
+        "points": {
+          "type": "cds.Integer"
+        },
+        "laps": {
+          "type": "cds.Integer"
+        },
+        "time": {
+          "type": "cds.Time"
+        },
+        "milliseconds": {
+          "type": "cds.Integer"
+        },
+        "fastestLap": {
+          "type": "cds.Integer"
+        },
+        "fastestLapTime": {
+          "type": "cds.Time"
+        },
+        "statusId": {
+          "type": "cds.Integer"
+        },
+        "_180_FormulaOneDrivers5": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneDrivers5",
+          "on": [
+            {
+              "ref": [
+                "driverId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneDrivers5",
+                "driverId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneDrivers"
+        },
+        "_180_FormulaOneRaces8": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneRaces8",
+          "on": [
+            {
+              "ref": [
+                "raceId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneRaces8",
+                "raceId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneRaces"
+        },
+        "_180_FormulaOneConstructors4": {
+          "type": "cds.Association",
+          "@EndUserText.label": "_180_FormulaOneConstructors4",
+          "on": [
+            {
+              "ref": [
+                "constructorId"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_180_FormulaOneConstructors4",
+                "constructorId"
+              ]
+            }
+          ],
+          "target": "180_FormulaOneConstructors"
         }
       }
     }
@@ -484,7 +973,7 @@
   "meta": {
     "creator": "ER Modeler",
     "kind": "sap.dwc.ermodel",
-    "label": "180_GbiSalesErmTemplate"
+    "label": "180_FormularOne"
   },
   "$version": "1.1"
 }
