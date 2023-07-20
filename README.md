@@ -13,8 +13,7 @@ We needed to design a Dashboard and a story to inspect, transform and visualize 
 
 ---
 ### Data Sources:
-
-[Kaggle Formula 1 Dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?select=results.csv)
+  [Kaggle Formula 1 Dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?select=results.csv)
 ---
 ### License
 This project is licensed with GPL. For more information checkl the "License" file.
