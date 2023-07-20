@@ -12,7 +12,7 @@ We needed to design a Dashboard and a story to inspect, transform and visualize 
 *The results can be found in the [presentation](https://github.com/NicoHenzel/DataWarehouseWorkshop/blob/main/Pr%C3%A4sentation_Gruppe02.pptx)
 
 ---
-###Data Sources:
+### Data Sources:
 
 [Kaggle Formula 1 Dataset](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020?select=results.csv)
 ---
